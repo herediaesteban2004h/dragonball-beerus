@@ -124,15 +124,18 @@
       state.filteredEpisodes = [...state.episodes];
     }
 
-    checkUrlParams();
+    const hasInitialHash = checkUrlParams();
     renderEpisodesGrid();
-    loadEpisode(state.currentIndex, false);
+    loadEpisode(state.currentIndex, hasInitialHash, false);
+    if (!hasInitialHash) {
+      window.scrollTo(0, 0);
+    }
   }
 
   // --------------------------------------------------------------------------
   // GESTIÓN DEL REPRODUCTOR Y CARGA DE CAPÍTULOS
   // --------------------------------------------------------------------------
-  function loadEpisode(index, smoothScrollToPlayer = true) {
+  function loadEpisode(index, smoothScrollToPlayer = true, updateHash = true) {
     if (index < 0 || index >= state.episodes.length) return;
 
     state.currentIndex = index;
@@ -166,8 +169,8 @@
       // Actualizar estado de botones de navegación (Deshabilitar en extremos)
       updateNavigationButtonsState();
 
-      // Resaltar tarjeta activa en el catálogo
-      highlightActiveCard(ep.id);
+      // Resaltar tarjeta activa en el catálogo (solo desplaza carrusel si el usuario interactuó)
+      highlightActiveCard(ep.id, smoothScrollToPlayer);
     };
 
     // Animar transición con GSAP si está disponible
@@ -177,7 +180,7 @@
       updateDOM();
     }
 
-    // Desplazar suavemente hacia el reproductor si fue invocado por interacción
+    // Desplazar suavemente hacia el reproductor solo si fue invocado por interacción o hash explícito
     if (smoothScrollToPlayer) {
       const videosSection = document.getElementById('videos-section');
       if (videosSection) {
@@ -187,7 +190,10 @@
       }
     }
 
-    updateUrlHash(ep.number);
+    // Actualizar hash en la URL únicamente si el usuario hizo clic o interacción explícita
+    if (updateHash) {
+      updateUrlHash(ep.number);
+    }
   }
 
   function getEmbedUrlForServer(episode, server) {
@@ -223,7 +229,7 @@
       if (window.DBSAnimations && typeof window.DBSAnimations.pulseRhombusBtn === 'function') {
         window.DBSAnimations.pulseRhombusBtn(DOM.btnPrevEpisode);
       }
-      loadEpisode(state.currentIndex - 1, true);
+      loadEpisode(state.currentIndex - 1, true, true);
     }
   }
 
@@ -232,7 +238,7 @@
       if (window.DBSAnimations && typeof window.DBSAnimations.pulseRhombusBtn === 'function') {
         window.DBSAnimations.pulseRhombusBtn(DOM.btnNextEpisode);
       }
-      loadEpisode(state.currentIndex + 1, true);
+      loadEpisode(state.currentIndex + 1, true, true);
     }
   }
 
@@ -247,7 +253,7 @@
       btn.classList.toggle('active', btn.getAttribute('data-server') === serverName);
     });
 
-    loadEpisode(state.currentIndex, false);
+    loadEpisode(state.currentIndex, false, false);
   }
 
   // --------------------------------------------------------------------------
@@ -313,7 +319,7 @@
       card.addEventListener('click', () => {
         const fullIndex = state.episodes.findIndex(item => item.id === ep.id);
         if (fullIndex !== -1) {
-          loadEpisode(fullIndex, true);
+          loadEpisode(fullIndex, true, true);
         }
       });
 
@@ -322,7 +328,7 @@
           e.preventDefault();
           const fullIndex = state.episodes.findIndex(item => item.id === ep.id);
           if (fullIndex !== -1) {
-            loadEpisode(fullIndex, true);
+            loadEpisode(fullIndex, true, true);
           }
         }
       });
@@ -337,14 +343,21 @@
     }
   }
 
-  function highlightActiveCard(episodeId) {
+  function highlightActiveCard(episodeId, scrollCarousel = true) {
     const cards = document.querySelectorAll('.episode-card');
     cards.forEach(card => {
       const id = parseInt(card.getAttribute('data-id'), 10);
       const isActive = (id === episodeId);
       card.classList.toggle('active-playing', isActive);
-      if (isActive && DOM.episodesCardsGrid) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      if (isActive && scrollCarousel && DOM.episodesCardsGrid) {
+        // Desplazar únicamente el contenedor horizontal del carrusel sin alterar el scroll global de la ventana
+        const cardLeft = card.offsetLeft;
+        const containerWidth = DOM.episodesCardsGrid.clientWidth;
+        const cardWidth = card.clientWidth;
+        DOM.episodesCardsGrid.scrollTo({
+          left: cardLeft - (containerWidth / 2) + (cardWidth / 2),
+          behavior: 'smooth'
+        });
       }
     });
   }
@@ -555,8 +568,10 @@
       const foundIdx = state.episodes.findIndex(item => item.number === epNum);
       if (foundIdx !== -1) {
         state.currentIndex = foundIdx;
+        return true;
       }
     }
+    return false;
   }
 
   function updateUrlHash(epNumber) {
@@ -718,6 +733,13 @@
   // INICIALIZACIÓN
   // --------------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', () => {
+    // Si la visita no contiene un hash explícito, forzar inicio en la cabecera
+    if (!window.location.hash) {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    }
     setupEventListeners();
     loadEpisodesData();
   });
