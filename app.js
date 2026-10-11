@@ -14,7 +14,7 @@
   // ENLACES SOCIALES Y COMUNIDAD OFICIALES
   // --------------------------------------------------------------------------
   const OFFICIAL_SOCIALS = {
-    whatsappChannel: 'https://whatsapp.com/channel/0029VbEDuONGE56lttP7hc1R',
+    whatsappChannel: 'https://whatsapp.com/channel/0029VbDW2kT7tkj9YVMlwC1h',
     tiktok: 'https://www.tiktok.com/@dragn.ball.super28?_r=1&_t=ZS-9ATPOa8dHhH'
   };
 
