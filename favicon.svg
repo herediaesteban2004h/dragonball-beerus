@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="fav-glow" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ff9900"/>
+      <stop offset="60%" stop-color="#e65100"/>
+      <stop offset="100%" stop-color="#801c00"/>
+    </radialGradient>
+    <linearGradient id="fav-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe89e"/>
+      <stop offset="50%" stop-color="#c89b3c"/>
+      <stop offset="100%" stop-color="#8a641a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#08070c" stroke="url(#fav-gold)" stroke-width="2.5"/>
+  <circle cx="32" cy="32" r="23" fill="url(#fav-glow)"/>
+  <!-- 4 Stars -->
+  <g fill="#ffe89e">
+    <polygon points="0,-6 1.5,-2 5,-2 2,0.5 3,4 0,1.5 -3,4 -2,0.5 -5,-2 -1.5,-2" transform="translate(26, 26) scale(0.7)"/>
+    <polygon points="0,-6 1.5,-2 5,-2 2,0.5 3,4 0,1.5 -3,4 -2,0.5 -5,-2 -1.5,-2" transform="translate(38, 26) scale(0.7)"/>
+    <polygon points="0,-6 1.5,-2 5,-2 2,0.5 3,4 0,1.5 -3,4 -2,0.5 -5,-2 -1.5,-2" transform="translate(26, 38) scale(0.7)"/>
+    <polygon points="0,-6 1.5,-2 5,-2 2,0.5 3,4 0,1.5 -3,4 -2,0.5 -5,-2 -1.5,-2" transform="translate(38, 38) scale(0.7)"/>
+  </g>
+</svg>

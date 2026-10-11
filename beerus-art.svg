@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="beerus-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e25eff" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#9313ea" stop-opacity="0.75"/>
+      <stop offset="70%" stop-color="#480582" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#08070c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beerus-skin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8c78b8"/>
+      <stop offset="50%" stop-color="#644e8d"/>
+      <stop offset="100%" stop-color="#3c2a5e"/>
+    </linearGradient>
+    <linearGradient id="gold-beerus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff2b3"/>
+      <stop offset="50%" stop-color="#c89b3c"/>
+      <stop offset="100%" stop-color="#735010"/>
+    </linearGradient>
+    <linearGradient id="collar-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#076785"/>
+    </linearGradient>
+    <filter id="aura-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Pulsing Hakai Aura Background -->
+  <circle cx="250" cy="250" r="230" fill="url(#beerus-aura)"/>
+  
+  <!-- Outer Energy Rings -->
+  <circle cx="250" cy="250" r="210" fill="none" stroke="rgba(226, 94, 255, 0.4)" stroke-width="2" stroke-dasharray="8,8"/>
+  <circle cx="250" cy="250" r="185" fill="none" stroke="rgba(255, 232, 158, 0.3)" stroke-width="1.5"/>
+
+  <!-- Beerus Silhouette and Divine Anatomy -->
+  <g transform="translate(0, 15)">
+    <!-- Ears -->
+    <!-- Left Ear -->
+    <path d="M185,190 L125,50 L205,145 Z" fill="url(#beerus-skin)" stroke="#27183e" stroke-width="3"/>
+    <path d="M180,180 L140,75 L195,145 Z" fill="#9f8cc9" opacity="0.6"/>
+    <!-- Right Ear -->
+    <path d="M315,190 L375,50 L295,145 Z" fill="url(#beerus-skin)" stroke="#27183e" stroke-width="3"/>
+    <path d="M320,180 L360,75 L305,145 Z" fill="#9f8cc9" opacity="0.6"/>
+    <!-- Left Earring -->
+    <circle cx="130" cy="95" r="9" fill="none" stroke="url(#gold-beerus)" stroke-width="3.5"/>
+
+    <!-- Head Contour -->
+    <path d="M190,170 C175,230 185,290 250,320 C315,290 325,230 310,170 C280,150 220,150 190,170 Z" fill="url(#beerus-skin)" stroke="#201335" stroke-width="3.5"/>
+    
+    <!-- Facial Features -->
+    <!-- Eyes with Piercing Yellow Gaze -->
+    <!-- Left Eye -->
+    <polygon points="205,230 240,242 220,250" fill="#ffeb3b" stroke="#000" stroke-width="1.5"/>
+    <polygon points="218,236 226,240 221,245" fill="#08070c"/>
+    <!-- Right Eye -->
+    <polygon points="295,230 260,242 280,250" fill="#ffeb3b" stroke="#000" stroke-width="1.5"/>
+    <polygon points="282,236 274,240 279,245" fill="#08070c"/>
+
+    <!-- Nose and Snout -->
+    <path d="M246,260 L254,260 L250,268 Z" fill="#1b0f2a"/>
+    <path d="M250,268 L250,278" stroke="#1b0f2a" stroke-width="2"/>
+    <path d="M238,285 C244,288 256,288 262,285" fill="none" stroke="#1b0f2a" stroke-width="2.5"/>
+
+    <!-- Egyptian Collar (God of Destruction Robes) -->
+    <path d="M140,325 C200,380 300,380 360,325 C390,385 410,430 430,470 L70,470 C90,430 110,385 140,325 Z" fill="#110d18" stroke="url(#gold-beerus)" stroke-width="3"/>
+    <!-- Neck Ribbon / Collar Design -->
+    <path d="M165,330 C210,375 290,375 335,330 L345,355 C295,405 205,405 155,355 Z" fill="url(#collar-cyan)" stroke="#08070c" stroke-width="2"/>
+    
+    <!-- Collar Golden Segments and Diamonds -->
+    <polygon points="250,350 260,365 250,380 240,365" fill="url(#gold-beerus)"/>
+    <polygon points="200,342 208,354 200,366 192,354" fill="url(#gold-beerus)"/>
+    <polygon points="300,342 308,354 300,366 292,354" fill="url(#gold-beerus)"/>
+
+    <!-- Golden Arm Bands -->
+    <rect x="100" y="410" width="35" height="15" rx="3" fill="url(#gold-beerus)"/>
+    <rect x="365" y="410" width="35" height="15" rx="3" fill="url(#gold-beerus)"/>
+
+    <!-- Hakai Energy Orb in Hand (Float Effect) -->
+    <g transform="translate(250, 410)" filter="url(#aura-glow)">
+      <circle cx="0" cy="0" r="28" fill="#ff00a0"/>
+      <circle cx="0" cy="0" r="22" fill="#d600ff"/>
+      <circle cx="0" cy="0" r="14" fill="#ffffff" opacity="0.9"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#ffe89e" stroke-width="1.5" stroke-dasharray="4,4"/>
+    </g>
+  </g>
+
+  <!-- Official Kanji "破壊神" (God of Destruction) Stamp -->
+  <g transform="translate(420, 80)">
+    <rect x="-30" y="-30" width="60" height="60" fill="rgba(8,7,12,0.85)" stroke="url(#gold-beerus)" stroke-width="2"/>
+    <text x="0" y="-8" fill="url(#gold-beerus)" font-family="'Noto Sans JP', sans-serif" font-size="16" font-weight="900" text-anchor="middle">破壊</text>
+    <text x="0" y="16" fill="#ffe89e" font-family="'Noto Sans JP', sans-serif" font-size="16" font-weight="900" text-anchor="middle">神</text>
+  </g>
+</svg>

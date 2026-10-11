@@ -1,0 +1,2628 @@
+/* ==========================================================================
+   DRAGON BALL SUPER: SAGA DE BEERUS - ESTILOS OFICIALES PRÉMIUM
+   Arquitectura: CSS3 Modular | Mobile-First | Dark Metallic & Gold Theme
+   Texturas Oficiales: bg_nz-GL.png, bg-intro.jpg, bg-staff.jpg, rhom.png
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES CSS (PALETA DE COLORES, TIPOGRAFÍA, SOMBRAS Y MARCOS)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Base Oscuro Metálico */
+  --bg-primary: #08070c;
+  --bg-secondary: #0f0d17;
+  --bg-card: rgba(16, 13, 25, 0.9);
+  --bg-card-hover: rgba(24, 19, 38, 0.96);
+  --bg-elevated: #161224;
+
+  /* Degradado Dorado Oficial */
+  --gold-light: #ffe89e;
+  --gold-primary: #c89b3c;
+  --gold-dark: #8a641a;
+  --gold-gradient: linear-gradient(135deg, #fff2be 0%, #ffe89e 25%, #c89b3c 60%, #8a641a 100%);
+  --gold-gradient-horizontal: linear-gradient(90deg, #ffe89e 0%, #c89b3c 50%, #8a641a 100%);
+  --gold-border-glow: 0 0 15px rgba(200, 155, 60, 0.45);
+
+  /* Acentos de Ki Divino (Hakai Púrpura & Dios Saiyajin Carmesí) */
+  --hakai-purple: #b846ff;
+  --hakai-purple-dark: #6e10aa;
+  --hakai-glow: 0 0 25px rgba(184, 70, 255, 0.45);
+  --ssg-crimson: #ff3b30;
+  --ssg-orange: #ff8c00;
+  --ssg-glow: 0 0 25px rgba(255, 59, 48, 0.45);
+
+  /* Tipografías */
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-jp: 'Noto Sans JP', sans-serif;
+
+  /* Textos y Contrastes */
+  --text-main: #f5f5f7;
+  --text-muted: #a6a4b8;
+  --text-dim: #716e84;
+
+  /* Bordes y Transiciones */
+  --border-gold-subtle: 1px solid rgba(200, 155, 60, 0.35);
+  --border-gold-solid: 1px solid #c89b3c;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Contenedores */
+  --max-width-content: 1240px;
+  --header-height: 74px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET Y ESTILOS GLOBALES CON TEXTURA OFICIAL bg_nz-GL.png
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  /* Textura Oficial con Ruido Dorado Stardust */
+  background-image: url('./bg_nz-GL.png'), url('./assets/images/bg_nz-GL.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  transition: all var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Utilidades de Texto Dorado */
+.gold-gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gold {
+  color: var(--gold-light);
+}
+
+.text-ssg {
+  color: #ff5252;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. MARCO DORADO PERIMETRAL OFICIAL & FONDOS ESPACIALES
+   -------------------------------------------------------------------------- */
+.gold-frame-top,
+.gold-frame-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gold-gradient-horizontal);
+  z-index: 999;
+  box-shadow: 0 0 12px rgba(200, 155, 60, 0.6);
+  pointer-events: none;
+}
+
+.gold-frame-top { top: 0; }
+.gold-frame-bottom { bottom: 0; }
+
+.gold-frame-left,
+.gold-frame-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ffe89e 0%, #c89b3c 50%, #8a641a 100%);
+  z-index: 999;
+  box-shadow: 0 0 12px rgba(200, 155, 60, 0.6);
+  pointer-events: none;
+}
+
+.gold-frame-left { left: 0; }
+.gold-frame-right { right: 0; }
+
+/* Esquineros Ornamentales estilo Shueisha / Toei Animation */
+.gold-corner {
+  position: fixed;
+  width: 22px;
+  height: 22px;
+  z-index: 1000;
+  pointer-events: none;
+  border: 3px solid var(--gold-light);
+}
+
+.corner-tl {
+  top: 6px;
+  left: 6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-tr {
+  top: 6px;
+  right: 6px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-bl {
+  bottom: 6px;
+  left: 6px;
+  border-right: none;
+  border-top: none;
+}
+
+.corner-br {
+  bottom: 6px;
+  right: 6px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Fondos y Nebulosa de Ki con Textura Oficial bg_nz-GL.png y bg-intro.jpg */
+.ambient-nebula {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -2;
+  background-image: 
+    url('./bg_nz-GL.png'),
+    linear-gradient(rgba(8, 7, 12, 0.65), rgba(8, 7, 12, 0.85)),
+    url('./bg-intro.jpg'),
+    radial-gradient(circle at 15% 20%, rgba(184, 70, 255, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(255, 70, 0, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(200, 155, 60, 0.1) 0%, transparent 55%);
+  background-position: center center, center center, center top, center, center, center;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 400px 400px, cover, cover, auto, auto, auto;
+  background-attachment: fixed;
+  opacity: 0.95;
+}
+
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* --------------------------------------------------------------------------
+   4. ENCABEZADO / NAVBAR (LOGO OFICIAL logo_en.webp)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: rgba(8, 7, 12, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(200, 155, 60, 0.28);
+  z-index: 100;
+  transition: all var(--transition-fast);
+}
+
+.site-header.scrolled {
+  background: rgba(8, 7, 12, 0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
+  border-bottom-color: rgba(200, 155, 60, 0.5);
+}
+
+.header-container {
+  max-width: var(--max-width-content);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+  transition: transform var(--transition-fast);
+}
+
+.logo-saga-tag {
+  background: var(--gold-gradient);
+  color: #08070c;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 2px;
+  letter-spacing: 2px;
+  box-shadow: 0 0 8px rgba(200, 155, 60, 0.4);
+}
+
+.brand-logo:hover .logo-img {
+  transform: scale(1.03);
+}
+
+/* Menú de Escritorio */
+.nav-menu {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .nav-menu {
+    display: block;
+  }
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 0.35rem 0;
+}
+
+.nav-jp {
+  font-family: var(--font-jp);
+  font-size: 0.65rem;
+  color: var(--gold-light);
+  opacity: 0.75;
+  letter-spacing: 2px;
+  transform: translateY(2px);
+}
+
+.nav-es {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold-gradient-horizontal);
+  transition: all var(--transition-fast);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover .nav-es,
+.nav-link.active .nav-es {
+  color: var(--gold-light);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Botón VIP en Cabecera */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-vip-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(200, 155, 60, 0.25) 100%);
+  border: 1px solid var(--gold-primary);
+  border-radius: 20px;
+  padding: 0.4rem 0.9rem;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.btn-vip-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  border-color: var(--gold-light);
+}
+
+.vip-pulse-indicator {
+  width: 7px;
+  height: 7px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #25d366;
+  animation: pulse-ring 1.8s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+/* Botón Oficial TikTok en Navbar */
+.btn-tiktok-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, rgba(254, 44, 85, 0.16) 0%, rgba(37, 244, 238, 0.12) 100%);
+  border: 1px solid rgba(254, 44, 85, 0.6);
+  border-radius: 20px;
+  padding: 0.4rem 0.85rem;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(254, 44, 85, 0.25);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-tiktok-header i {
+  color: #25f4ee;
+  font-size: 0.85rem;
+  filter: drop-shadow(0 0 3px #fe2c55);
+  transition: transform var(--transition-fast);
+}
+
+.btn-tiktok-header:hover {
+  transform: translateY(-2px);
+  border-color: #25f4ee;
+  box-shadow: 0 4px 15px rgba(254, 44, 85, 0.5), 0 0 12px rgba(37, 244, 238, 0.4);
+  color: #ffffff;
+}
+
+.btn-tiktok-header:hover i {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+@media (max-width: 480px) {
+  .btn-tiktok-header {
+    padding: 0.4rem 0.6rem;
+  }
+  .tiktok-header-text {
+    display: none;
+  }
+}
+
+/* Enlaces TikTok en Drawer Móvil */
+.text-tiktok {
+  color: #fe2c55 !important;
+}
+
+.drawer-link.drawer-tiktok {
+  background: linear-gradient(90deg, rgba(254, 44, 85, 0.12) 0%, transparent 100%);
+  border-left: 3px solid #fe2c55;
+  color: #ffffff;
+}
+
+.drawer-link.drawer-tiktok:hover {
+  background: linear-gradient(90deg, rgba(254, 44, 85, 0.22) 0%, transparent 100%);
+  border-left-color: #25f4ee;
+  color: var(--gold-light);
+}
+
+/* Botón Hamburguesa Móvil */
+.mobile-toggle-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border: 1px solid rgba(200, 155, 60, 0.4);
+  border-radius: 4px;
+  background: rgba(18, 15, 28, 0.7);
+}
+
+@media (min-width: 900px) {
+  .mobile-toggle-btn {
+    display: none;
+  }
+}
+
+.mobile-toggle-btn .bar {
+  width: 100%;
+  height: 2px;
+  background: var(--gold-light);
+  transition: all var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   5. MENÚ MÓVIL (DRAWER)
+   -------------------------------------------------------------------------- */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background: #0f0d17;
+  border-left: 2px solid var(--gold-primary);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transition: right var(--transition-normal);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.85);
+}
+
+.mobile-drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(200, 155, 60, 0.2);
+}
+
+.drawer-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+}
+
+.drawer-close-btn {
+  color: var(--text-main);
+  font-size: 1.25rem;
+}
+
+.drawer-nav-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.drawer-link i {
+  color: var(--gold-primary);
+  width: 20px;
+}
+
+.drawer-footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1040;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN HERO CON AVATARES OFICIALES (cr-beerus.jpg & cr-goku.jpg)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  padding: 3rem 1rem 3.5rem 1rem;
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .hero-container {
+    grid-template-columns: 290px 1fr 290px;
+    text-align: left;
+    gap: 1.5rem;
+  }
+}
+
+/* Columnas de Personajes y Marco Dorado Oficial */
+.hero-character {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* MARCO DORADO CIRCULAR OFICIAL PARA LOS AVATARES */
+.official-char-frame {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  padding: 7px;
+  background: var(--gold-gradient);
+  box-shadow: 
+    0 0 25px rgba(200, 155, 60, 0.45),
+    0 15px 35px rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  will-change: transform;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+@media (min-width: 1200px) {
+  .official-char-frame {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+.official-char-frame::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 232, 158, 0.85);
+  pointer-events: none;
+}
+
+.official-char-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #08070c;
+  background: #08070c;
+}
+
+.official-char-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.official-char-frame:hover {
+  transform: scale(1.04);
+  box-shadow: 
+    0 0 40px rgba(200, 155, 60, 0.75),
+    0 20px 45px rgba(0, 0, 0, 0.95);
+}
+
+.official-char-frame:hover .official-char-img {
+  transform: scale(1.08);
+}
+
+/* Rombo Dorado rhom.png en el marco de personaje */
+.char-rhom-badge {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  z-index: 5;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+}
+
+.char-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  filter: blur(55px);
+  z-index: 1;
+  opacity: 0.65;
+}
+
+.char-glow-purple {
+  background: radial-gradient(circle, var(--hakai-purple) 0%, transparent 70%);
+}
+
+.char-glow-orange {
+  background: radial-gradient(circle, var(--ssg-crimson) 0%, transparent 70%);
+}
+
+.char-caption {
+  margin-top: 1.25rem;
+  text-align: center;
+  z-index: 2;
+  background: rgba(8, 7, 12, 0.92);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(200, 155, 60, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9), 0 0 12px rgba(200, 155, 60, 0.25);
+}
+
+.char-jp {
+  display: block;
+  font-family: var(--font-jp);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #ffe89e;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+}
+
+.char-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95);
+}
+
+.char-role {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #ffe89e;
+  margin-top: 2px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+}
+
+/* Contenido Central Hero con Caja Estilo Vidrio Templado Oscuro */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(8, 7, 12, 0.85);
+  padding: 2.25rem 2rem;
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 207, 101, 0.4);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.9),
+    inset 0 0 25px rgba(200, 155, 60, 0.08);
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 992px) {
+  .hero-content {
+    align-items: flex-start;
+  }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  background: rgba(14, 11, 22, 0.95);
+  border: 1.5px solid var(--gold-light);
+  border-radius: 30px;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 10px rgba(200, 155, 60, 0.3);
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.hero-badge span {
+  color: var(--gold-light);
+  font-weight: 800;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.badge-mini-rhom {
+  width: 14px;
+  height: 14px;
+}
+
+.hero-main-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
+}
+
+.title-sub {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.title-focus {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95));
+}
+
+@media (min-width: 768px) {
+  .title-focus {
+    font-size: 3.5rem;
+  }
+}
+
+.title-jp {
+  font-family: var(--font-jp);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #ffe89e;
+  opacity: 0.95;
+  margin-top: 0.35rem;
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+.hero-description {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  max-width: 580px;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+}
+
+.hero-description strong.text-ssg {
+  color: #ff5252;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255, 82, 82, 0.7);
+}
+
+/* Botones de Acción del Hero con Rombo rhom.png */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+  .hero-cta-group {
+    justify-content: flex-start;
+  }
+}
+
+.btn-gold-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.8rem;
+  background: var(--gold-gradient);
+  color: #08070c;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(200, 155, 60, 0.45);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-gold-hero:hover::before {
+  left: 100%;
+}
+
+.btn-gold-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(200, 155, 60, 0.6);
+}
+
+.btn-rhombus-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.rhom-icon-btn {
+  width: 100%;
+  height: 100%;
+}
+
+.rhom-play-arrow {
+  position: absolute;
+  color: #08070c;
+  font-size: 0.6rem;
+}
+
+.btn-vip-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.6rem;
+  background: rgba(18, 15, 28, 0.9);
+  border: 1px solid var(--gold-primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.btn-vip-hero:hover {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: #25d366;
+  color: #25d366;
+  transform: translateY(-3px);
+}
+
+.hero-features-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .hero-features-bar {
+    justify-content: flex-start;
+  }
+}
+
+.feat-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(14, 11, 22, 0.95);
+  padding: 0.45rem 0.95rem;
+  border-radius: 6px;
+  border: 1px solid rgba(200, 155, 60, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.95);
+  display: inline-flex;
+  align-items: center;
+}
+
+.feat-pill i {
+  color: var(--gold-light);
+  margin-right: 0.45rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN DE PERSONAJES CLAVE (BEERUS, GOKU, WHIS, VEGETA)
+   -------------------------------------------------------------------------- */
+.characters-section {
+  padding: 0.5rem 1rem 2rem 1rem;
+}
+
+.char-showcase-bar {
+  background: rgba(14, 11, 22, 0.88);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  border-radius: var(--border-radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 800px) {
+  .char-showcase-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.char-bar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+}
+
+.bar-rhom-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.char-pills-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.char-selector-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 4px 12px 4px 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.char-selector-card:hover {
+  border-color: var(--gold-primary);
+  background: rgba(200, 155, 60, 0.15);
+  transform: translateY(-2px);
+}
+
+.char-selector-card.active {
+  border-color: var(--gold-light);
+  background: rgba(200, 155, 60, 0.25);
+  box-shadow: 0 0 12px rgba(200, 155, 60, 0.4);
+}
+
+.char-thumb-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--gold-light);
+}
+
+.char-thumb-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.char-thumb-name {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+}
+
+.char-thumb-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ffe89e;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   8. ZONA PUBLICITARIA ADSTERRA
+   -------------------------------------------------------------------------- */
+.ad-placement-zone {
+  padding: 1rem 1rem 2rem 1rem;
+}
+
+.ad-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ad-placeholder-frame {
+  background: rgba(15, 13, 23, 0.75);
+  border: 1px dashed rgba(200, 155, 60, 0.35);
+  border-radius: var(--border-radius-md);
+  padding: 0.85rem;
+  text-align: center;
+  position: relative;
+}
+
+.ad-label {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.ad-mock-slot {
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN "VIDEOS" (REPRODUCTOR CENTRAL PRÉMIUM)
+   -------------------------------------------------------------------------- */
+.videos-section {
+  position: relative;
+  padding: 2.5rem 1rem 4rem 1rem;
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+/* Encabezado Ornamental con rhom.png Oficial */
+.section-ornament-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.ornament-line {
+  flex: 1;
+  max-width: 140px;
+  height: 2px;
+  background: var(--gold-gradient-horizontal);
+}
+
+.ornament-rhom-img {
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 6px var(--gold-primary));
+}
+
+.section-title {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-jp-small {
+  font-family: var(--font-jp);
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  letter-spacing: 3px;
+  opacity: 0.8;
+}
+
+.title-text-gold {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(200, 155, 60, 0.3);
+}
+
+/* Contenedor Maestro del Reproductor con textura bg-staff.jpg sutil */
+.player-master-card {
+  background: 
+    linear-gradient(180deg, rgba(16, 13, 25, 0.94) 0%, rgba(10, 8, 16, 0.97) 100%),
+    url('./bg-staff.jpg') center/cover;
+  border: 1px solid rgba(200, 155, 60, 0.45);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.85),
+    inset 0 0 25px rgba(200, 155, 60, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.player-master-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold-gradient-horizontal);
+}
+
+/* Barra de Estado Superior del Reproductor */
+.player-header-bar {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(200, 155, 60, 0.2);
+  background: rgba(10, 8, 16, 0.92);
+}
+
+@media (min-width: 768px) {
+  .player-header-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.player-current-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.meta-ep-badge {
+  background: var(--gold-gradient);
+  color: #08070c;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  padding: 0.25rem 0.65rem;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.meta-tag {
+  background: rgba(184, 70, 255, 0.2);
+  color: var(--hakai-purple);
+  border: 1px solid var(--hakai-purple);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.player-current-title {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .player-current-title {
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+.player-current-jp {
+  display: block;
+  width: 100%;
+  font-family: var(--font-jp);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* Selector de Servidores */
+.server-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.server-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-right: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.server-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.server-tab-btn .server-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.server-tab-btn:hover {
+  color: #fff;
+  border-color: var(--gold-primary);
+}
+
+.server-tab-btn.active {
+  color: #08070c;
+  background: var(--gold-gradient);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.4);
+}
+
+.server-tab-btn.active .server-dot {
+  background: #08070c;
+}
+
+/* --------------------------------------------------------------------------
+   10. ESCENARIO DE VIDEO 16:9 & BOTONES EN ROMBO DORADO (rhom.png)
+   -------------------------------------------------------------------------- */
+.video-stage-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Marco Responsivo 16:9 */
+.player-aspect-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  overflow: hidden;
+}
+
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 5;
+}
+
+/* Loader Oficial con load.png */
+.player-loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #1a102b 0%, #08070c 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.player-loader-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loader-spinner {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 1rem;
+}
+
+.loader-official-img {
+  width: 100%;
+  height: 100%;
+  animation: spin 3s infinite linear;
+  filter: drop-shadow(0 0 15px rgba(200, 155, 60, 0.6));
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+}
+
+/* BOTONES DE NAVEGACIÓN EN ROMBO DORADO OFICIAL (rhom.png) */
+.rhombus-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+
+@media (min-width: 850px) {
+  .rhombus-nav-btn {
+    display: flex;
+  }
+}
+
+.nav-btn-prev { left: 16px; }
+.nav-btn-next { right: 16px; }
+
+.rhombus-shape-wrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+  cursor: pointer;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9));
+}
+
+.rhom-btn-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.rhombus-icon-over {
+  position: absolute;
+  color: #ffe89e;
+  font-size: 1.15rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.rhombus-tooltip {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  background: rgba(8, 7, 12, 0.88);
+  padding: 2px 6px;
+  border-radius: 3px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all var(--transition-fast);
+  pointer-events: none;
+}
+
+.rhombus-nav-btn:hover .rhombus-shape-wrap {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 15px rgba(200, 155, 60, 0.8));
+}
+
+.rhombus-nav-btn:hover .rhombus-icon-over {
+  color: #ffffff;
+}
+
+.rhombus-nav-btn:hover .rhombus-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rhombus-nav-btn:disabled,
+.rhombus-nav-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Controles Móviles */
+.mobile-player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: #0f0d17;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 850px) {
+  .mobile-player-controls {
+    display: none;
+  }
+}
+
+.btn-control-mobile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(200, 155, 60, 0.15);
+  border: 1px solid var(--gold-primary);
+  border-radius: 4px;
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.btn-control-mobile:active {
+  background: var(--gold-gradient);
+  color: #08070c;
+}
+
+.btn-control-mobile:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.mobile-current-indicator {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+/* Barra de Herramientas del Reproductor */
+.player-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(14, 11, 22, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+}
+
+.toolbar-btn:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-primary);
+  background: rgba(200, 155, 60, 0.1);
+}
+
+.toolbar-btn.btn-share {
+  background: rgba(200, 155, 60, 0.15);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+}
+
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+/* Panel de Detalles del Episodio */
+.episode-details-panel {
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  background: rgba(12, 10, 18, 0.88);
+}
+
+@media (min-width: 768px) {
+  .episode-details-panel {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.synopsis-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.synopsis-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.episode-specs-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+}
+
+.spec-value {
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   11. BANNER VIP DESTACADO (GRUPO DE WHATSAPP)
+   -------------------------------------------------------------------------- */
+.vip-callout-banner {
+  margin: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(20, 15, 30, 0.95) 0%, rgba(13, 30, 20, 0.9) 100%);
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-callout-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(37, 211, 102, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vip-banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .vip-banner-content {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.vip-banner-icon {
+  flex-shrink: 0;
+}
+
+.vip-banner-texts {
+  flex: 1;
+}
+
+.vip-banner-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.vip-banner-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.vip-banner-subtitle strong {
+  color: #25d366;
+}
+
+.btn-gold-vip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #25d366 0%, #128c3b 100%);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.btn-gold-vip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.pulse-btn {
+  animation: pulse-vip 2.5s infinite;
+}
+
+@keyframes pulse-vip {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   12. CATÁLOGO DE EPISODIOS CON MINIATURAS OFICIALES (mv-thum01 A 05)
+   -------------------------------------------------------------------------- */
+.episodes-catalogue-section {
+  padding: 3rem 1rem 4rem 1rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 8, 16, 0.75) 100%);
+}
+
+.catalogue-header {
+  margin-bottom: 2.5rem;
+}
+
+.catalogue-main-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.cat-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #1a1921;
+  text-shadow: 0 1px 2px rgba(255, 232, 158, 0.4);
+}
+
+.catalogue-main-title .cat-main-heading {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #0f0f14 !important;
+  -webkit-text-fill-color: #0f0f14 !important;
+  text-shadow: 0 1px 3px rgba(255, 232, 158, 0.6), 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.catalogue-desc {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1921;
+  text-shadow: 0 1px 1px rgba(255, 232, 158, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+/* Buscador y Filtros con Alto Contraste */
+.search-filter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .search-filter-box {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.search-input-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+}
+
+.search-input-wrap input {
+  width: 100%;
+  padding: 0.65rem 2.2rem 0.65rem 2.5rem;
+  background: #110e1c;
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 25px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-fast);
+}
+
+.search-input-wrap input:focus {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 15px rgba(200, 155, 60, 0.5);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  display: none;
+}
+
+.filter-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Botones de Filtros Inactivos en Color Oscuro #1a1a24 y Borde Visible */
+.filter-pill {
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background: #1a1a24;
+  border: 1.5px solid rgba(200, 155, 60, 0.65);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.filter-pill:hover {
+  background: #282736;
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  box-shadow: 0 4px 15px rgba(200, 155, 60, 0.35);
+  transform: translateY(-2px);
+}
+
+.filter-pill.active {
+  background: var(--gold-gradient);
+  color: #08070c;
+  border-color: #ffe89e;
+  font-weight: 900;
+  box-shadow: 0 0 14px rgba(200, 155, 60, 0.6);
+}
+
+/* CARRUSEL CON SCROLL HORIZONTAL PARA LOS 19 EPISODIOS */
+.episodes-cards-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 4px 24px 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #c89b3c rgba(14, 11, 22, 0.85);
+}
+
+/* Barra de Scroll Horizontal Tematizada en Oro y Oscuro Metálico */
+.episodes-cards-grid::-webkit-scrollbar {
+  height: 9px;
+}
+
+.episodes-cards-grid::-webkit-scrollbar-track {
+  background: rgba(14, 11, 22, 0.85);
+  border-radius: 6px;
+  border: 1px solid rgba(200, 155, 60, 0.2);
+}
+
+.episodes-cards-grid::-webkit-scrollbar-thumb {
+  background: var(--gold-gradient-horizontal);
+  border-radius: 6px;
+  border: 1px solid rgba(8, 7, 12, 0.5);
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.5);
+}
+
+.episodes-cards-grid::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #fff2be 0%, #ffe89e 50%, #c89b3c 100%);
+  box-shadow: 0 0 15px rgba(200, 155, 60, 0.8);
+}
+
+/* Tarjeta Individual en Carrusel Horizontal */
+.episode-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+@media (min-width: 1200px) {
+  /* En pantallas de 1200px+ caben perfectamente los 5 capítulos visibles solicitados */
+  .episode-card {
+    flex: 0 0 calc((100% - 60px) / 5);
+    min-width: 220px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .episode-card {
+    flex: 0 0 calc((100% - 45px) / 4);
+    min-width: 220px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .episode-card {
+    flex: 0 0 calc((100% - 30px) / 2.8);
+    min-width: 230px;
+  }
+}
+
+@media (max-width: 599px) {
+  .episode-card {
+    flex: 0 0 82vw;
+    max-width: 290px;
+  }
+}
+
+.episode-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75), 0 0 15px rgba(200, 155, 60, 0.3);
+}
+
+.episode-card.active-playing {
+  border: 2px solid var(--gold-light);
+  box-shadow: 0 0 25px rgba(200, 155, 60, 0.5), inset 0 0 15px rgba(200, 155, 60, 0.15);
+}
+
+.episode-card.active-playing .card-playing-indicator {
+  display: flex;
+}
+
+/* Miniatura de la Tarjeta */
+.card-thumbnail-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.episode-card:hover .card-img {
+  transform: scale(1.06);
+}
+
+/* Rombo Oficial de Play en la Miniatura con rhom.png */
+.card-play-hover-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all var(--transition-fast);
+  filter: drop-shadow(0 0 12px rgba(200, 155, 60, 0.8));
+}
+
+.card-play-hover-btn img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-play-hover-btn i {
+  position: absolute;
+  color: #ffe89e;
+  font-size: 0.95rem;
+}
+
+.episode-card:hover .card-play-hover-btn {
+  opacity: 1;
+}
+
+.card-number-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(8, 7, 12, 0.9);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.card-duration-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.card-playing-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--gold-gradient);
+  color: #08070c;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: none;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.6);
+}
+
+/* Cuerpo de la Tarjeta */
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.card-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  letter-spacing: 1px;
+}
+
+.card-type {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-synopsis-snippet {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-characters {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.card-play-action {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+}
+
+/* Estado de Sin Resultados */
+.no-results-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: rgba(18, 15, 28, 0.6);
+  border: 1px dashed rgba(200, 155, 60, 0.3);
+  border-radius: var(--border-radius-md);
+  margin-top: 1rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+
+.no-results-state h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.no-results-state p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 1.25rem;
+}
+
+.btn-gold-reset {
+  display: inline-flex;
+  padding: 0.65rem 1.4rem;
+  background: var(--gold-gradient);
+  color: #08070c;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   13. SECCIÓN SAGA LORE & PÓSTER OFICIAL kv-2.webp
+   -------------------------------------------------------------------------- */
+.saga-lore-section {
+  padding: 3rem 1rem 4rem 1rem;
+}
+
+.lore-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.lore-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 850px) {
+  .lore-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.section-tag-gold {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.lore-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1.5px;
+  margin-bottom: 1rem;
+}
+
+.lore-paragraph {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.lore-stats-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.lore-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stat-name {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.lore-frame {
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--gold-primary);
+  box-shadow: 0 0 25px rgba(200, 155, 60, 0.25);
+}
+
+.lore-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.lore-frame-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(8, 7, 12, 0.92);
+  padding: 0.5rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+}
+
+/* --------------------------------------------------------------------------
+   14. BOTÓN FLOTANTE "TOP" CON ROMBO OFICIAL rhom.png
+   -------------------------------------------------------------------------- */
+.btn-back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 950;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.top-rhom-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9));
+  transition: transform var(--transition-fast);
+}
+
+.top-rhom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.top-rhom-icon {
+  position: absolute;
+  color: #ffe89e;
+  font-size: 0.95rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.top-text {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+}
+
+.btn-back-to-top:hover .top-rhom-wrap {
+  transform: scale(1.14);
+  filter: drop-shadow(0 0 15px rgba(200, 155, 60, 0.9));
+}
+
+/* --------------------------------------------------------------------------
+   15. MODAL DE COMPARTIR Y MODO CINE
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  background: #110e1c;
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--border-radius-md);
+  width: 100%;
+  max-width: 480px;
+  padding: 1.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(200, 155, 60, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.75rem;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 1.5px;
+}
+
+.modal-close-btn {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.modal-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.share-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.share-btn-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.btn-share-wa { background: #25d366; }
+.btn-share-fb { background: #1877f2; }
+.btn-share-tw { background: #000000; border: 1px solid #333; }
+.btn-share-tg { background: #229ed9; }
+
+.copy-url-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.copy-url-group input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  color: #fff;
+  font-size: 0.78rem;
+}
+
+.btn-copy-url {
+  background: var(--gold-gradient);
+  color: #08070c;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.copy-success-notice {
+  display: block;
+  font-size: 0.72rem;
+  color: #25d366;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.copy-success-notice.show {
+  opacity: 1;
+}
+
+/* Modo Cine */
+body.cinema-active .site-header,
+body.cinema-active .hero-section,
+body.cinema-active .characters-section,
+body.cinema-active .ad-placement-zone,
+body.cinema-active .episodes-catalogue-section,
+body.cinema-active .saga-lore-section,
+body.cinema-active .site-footer {
+  opacity: 0.15;
+  filter: blur(4px);
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+body.cinema-active .player-master-card {
+  box-shadow: 0 0 60px rgba(184, 70, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   16. PIE DE PÁGINA
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: #050408;
+  border-top: 1px solid rgba(200, 155, 60, 0.25);
+  padding: 3rem 1rem 2rem 1rem;
+}
+
+.footer-container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footer-brand-area {
+  max-width: 380px;
+}
+
+.footer-logo {
+  height: 38px;
+  width: auto;
+  margin-bottom: 0.75rem;
+}
+
+.footer-subtext {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 3rem;
+}
+
+.footer-col-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+  margin-bottom: 0.75rem;
+}
+
+.footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links-list a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer-links-list a:hover {
+  color: var(--gold-light);
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+}
+
+.copyright-notice {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.6;
+}
