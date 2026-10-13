@@ -1,0 +1,9 @@
+{
+  "name": "dragonball-beerus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma oficial dedicada a la Saga de Beerus de Dragon Ball Super",
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
+}

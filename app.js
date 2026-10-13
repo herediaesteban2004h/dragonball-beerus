@@ -730,6 +730,19 @@
   }
 
   // --------------------------------------------------------------------------
+  // VERCEL WEB ANALYTICS (INJECT)
+  // --------------------------------------------------------------------------
+  function injectVercelAnalytics() {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    if (!document.querySelector('script[src*="/_vercel/insights/script.js"]')) {
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }
+
+  // --------------------------------------------------------------------------
   // INICIALIZACIÓN
   // --------------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', () => {
@@ -740,6 +753,7 @@
       }
       window.scrollTo(0, 0);
     }
+    injectVercelAnalytics();
     setupEventListeners();
     loadEpisodesData();
   });
